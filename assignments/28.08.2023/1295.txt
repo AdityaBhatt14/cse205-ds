@@ -1,0 +1,24 @@
+class Solution {
+    public int findNumbers(int[] nums) {
+        int temp = 0;
+        
+        int numcount = 0;
+        for(int i = 0; i <nums.length; i++)
+        {
+            temp = nums[i];
+            int digicount = 0;
+            while(temp != 0)
+            {
+                digicount++;
+                temp = temp/10;
+
+                
+            }
+            if(digicount % 2 == 0)
+                {
+                    numcount++;
+                }
+        }
+        return numcount;
+    }
+}
