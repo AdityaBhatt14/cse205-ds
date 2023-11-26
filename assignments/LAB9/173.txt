@@ -1,0 +1,30 @@
+class BSTIterator {
+
+    Stack<TreeNode> leftNodes = new Stack<>();
+
+    public BSTIterator(TreeNode root) {
+        this.walkOnLeft(root);
+    }
+
+    private void walkOnLeft(TreeNode root) {
+        while (root != null) {
+            leftNodes.push(root);
+            root = root.left;
+        }
+    }
+    
+    public int next() {
+        if (!hasNext()) {
+            return -1;
+        }
+
+        TreeNode currentNode = this.leftNodes.pop();
+        this.walkOnLeft(currentNode.right);
+        
+        return currentNode.val;    
+    }
+    
+    public boolean hasNext() {
+        return !this.leftNodes.empty();
+    }
+}
